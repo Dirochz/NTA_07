@@ -4,7 +4,7 @@ public final class mag extends javax.swing.JInternalFrame {
     int resp;
     public mag() {
         initComponents();
-        setTitle("Agregar Usuario");
+        setTitle("Menu Agregar");
     }
     
     @SuppressWarnings("unchecked")

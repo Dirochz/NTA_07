@@ -56,6 +56,37 @@ public final class Usuario extends javax.swing.JInternalFrame {
             System.out.println(""+e);
         }
     }
+    void buscar(){
+        modelo.setRowCount(0);
+        String Bus = txt_bu.getText().trim();
+        try{
+            Connection cn = Conexion.conectar();
+            String query;
+            if(Bus.equals("")){
+                query = "select * from usuario";
+            }
+            else{
+                query = "select * from usuario Where ID='"+Bus+"' or Nom='"+Bus+"' or ApPa='"+Bus+"' or ApMa='"+Bus+"' or Cor='"+Bus+"' or Nick='"+Bus+"' or Cont='"+Bus+"'";
+            }
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            Object[] imgan = new Object[8];
+            while(rs.next()){
+                imgan[0] = rs.getInt("ID");
+                imgan[1] = rs.getString("Nom");
+                imgan[2] = rs.getString("ApPa");
+                imgan[3] = rs.getString("ApMa");
+                imgan[4] = rs.getString("Cor");
+                imgan[5] = rs.getString("Nick");
+                imgan[6] = rs.getString("Cont");
+                modelo.addRow(imgan);
+            }
+            u.setModel(modelo);
+        }catch(SQLException e){
+            System.out.println("Error en conexión local al textear el buscar" + e);
+        }
+        txt_bu.setText("");
+    }
     void Mod(){
         fila = u.getSelectedRow();
         id = Integer.parseInt(this.u.getValueAt(fila, 0).toString());
@@ -101,6 +132,8 @@ public final class Usuario extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txt_bu = new javax.swing.JTextField();
+        bo_ag1 = new javax.swing.JButton();
         Actualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         u = new javax.swing.JTable();
@@ -121,6 +154,28 @@ public final class Usuario extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(34, 194, 194));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_bu.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        txt_bu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_buKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_buKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_bu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 40));
+
+        bo_ag1.setFont(new java.awt.Font("Comic Sans MS", 0, 20)); // NOI18N
+        bo_ag1.setForeground(new java.awt.Color(0, 0, 0));
+        bo_ag1.setText("Buscar");
+        bo_ag1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bo_ag1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bo_ag1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bo_ag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 100, 30));
 
         Actualizar.setFont(new java.awt.Font("Comic Sans MS", 0, 20)); // NOI18N
         Actualizar.setForeground(new java.awt.Color(0, 0, 0));
@@ -405,12 +460,27 @@ public final class Usuario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_ActualizarActionPerformed
 
+    private void txt_buKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buKeyReleased
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            buscar();
+        }
+    }//GEN-LAST:event_txt_buKeyReleased
+
+    private void txt_buKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buKeyTyped
+
+    }//GEN-LAST:event_txt_buKeyTyped
+
+    private void bo_ag1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo_ag1ActionPerformed
+        buscar();
+    }//GEN-LAST:event_bo_ag1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JButton bo_El;
     private javax.swing.JButton bo_ag;
+    private javax.swing.JButton bo_ag1;
     private javax.swing.JCheckBox ce_el;
     private javax.swing.JCheckBox ce_mod;
     private javax.swing.JButton jButton1;
@@ -418,6 +488,7 @@ public final class Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton pdf;
+    private javax.swing.JTextField txt_bu;
     private javax.swing.JTable u;
     // End of variables declaration//GEN-END:variables
 }

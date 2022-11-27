@@ -42,7 +42,7 @@ public final class Productos extends javax.swing.JInternalFrame {
         setTitle("Productos");
         table();
     }
-    /*
+    
     void buscar(){
         modelo.setRowCount(0);
         Bus = txt_bu.getText().trim();
@@ -74,7 +74,7 @@ public final class Productos extends javax.swing.JInternalFrame {
         }
         txt_bu.setText("");
     }
-    */
+    
     void table(){
         modelo = (DefaultTableModel)u.getModel();
         u.setModel(modelo);
@@ -164,6 +164,8 @@ public final class Productos extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        bo_ag1 = new javax.swing.JButton();
+        txt_bu = new javax.swing.JTextField();
         co_bu = new javax.swing.JComboBox<>();
         lb_img = new javax.swing.JLabel();
         Actualizar = new javax.swing.JButton();
@@ -186,6 +188,28 @@ public final class Productos extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(34, 194, 194));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bo_ag1.setFont(new java.awt.Font("Comic Sans MS", 0, 20)); // NOI18N
+        bo_ag1.setForeground(new java.awt.Color(0, 0, 0));
+        bo_ag1.setText("Buscar");
+        bo_ag1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bo_ag1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bo_ag1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bo_ag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 100, 30));
+
+        txt_bu.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        txt_bu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_buKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_buKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_bu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 190, 40));
 
         co_bu.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         co_bu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Taza", "Ropa" }));
@@ -545,12 +569,27 @@ public final class Productos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_uMouseClicked
 
+    private void bo_ag1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo_ag1ActionPerformed
+        buscar();
+    }//GEN-LAST:event_bo_ag1ActionPerformed
+
+    private void txt_buKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buKeyTyped
+
+    }//GEN-LAST:event_txt_buKeyTyped
+
+    private void txt_buKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buKeyReleased
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            buscar();
+        }
+    }//GEN-LAST:event_txt_buKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JButton bo_El;
     private javax.swing.JButton bo_ag;
+    private javax.swing.JButton bo_ag1;
     private javax.swing.JCheckBox ce_el;
     private javax.swing.JCheckBox ce_mod;
     private javax.swing.JComboBox<String> co_bu;
@@ -560,6 +599,7 @@ public final class Productos extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_img;
     private javax.swing.JButton pdf;
+    private javax.swing.JTextField txt_bu;
     private javax.swing.JTable u;
     // End of variables declaration//GEN-END:variables
 }
