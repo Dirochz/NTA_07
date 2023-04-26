@@ -312,8 +312,6 @@ public final class Reporte extends javax.swing.JInternalFrame {
             documento.close();
             JOptionPane.showMessageDialog(null, "Reporte de Usuario se ha Creado.");
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
-        } catch (IOException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_usuarioActionPerformed
 
@@ -371,8 +369,7 @@ public final class Reporte extends javax.swing.JInternalFrame {
             documento.close();
             JOptionPane.showMessageDialog(null, "Reporte creado.");
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
-        } catch (IOException ex) {
-        } 
+        }
     }//GEN-LAST:event_ventasActionPerformed
 
     private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
@@ -432,8 +429,6 @@ public final class Reporte extends javax.swing.JInternalFrame {
             documento.close();
             JOptionPane.showMessageDialog(null, "Reporte de Productos se ha Creado.");
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
-        } catch (IOException ex) {
-            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_productoActionPerformed
 
@@ -487,7 +482,6 @@ public final class Reporte extends javax.swing.JInternalFrame {
             documento.close();
             JOptionPane.showMessageDialog(null, "Reporte creado.");
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
-        } catch (IOException ex) {
         }
     }//GEN-LAST:event_usuario3ActionPerformed
 

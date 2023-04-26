@@ -429,8 +429,6 @@ public final class Usuario extends javax.swing.JInternalFrame {
             documento.close();
             JOptionPane.showMessageDialog(null, "Reporte de Usuario se ha Creado.");
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
-        } catch (IOException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_pdfActionPerformed
 

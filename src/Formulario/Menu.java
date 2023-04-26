@@ -1,4 +1,6 @@
 package Formulario;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,7 @@ public final class Menu extends javax.swing.JFrame {
         user = Login.nick;
         checar();
         this.setLocationRelativeTo(null);
+        setIconImage(getIconImage());
     }
     
     void checar(){
@@ -31,6 +34,12 @@ public final class Menu extends javax.swing.JFrame {
         }catch(SQLException e){            
             System.out.println("Error en verificar el producto: " + e);
         }
+    }
+    
+    @Override 
+    public Image getIconImage(){ 
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("img/logo.png"));
+        return retValue;
     }
     
     @SuppressWarnings("unchecked")

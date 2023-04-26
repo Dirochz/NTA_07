@@ -1,5 +1,6 @@
 package Formulario;
-
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import nta_07.Conexion;
 
-public class Login extends javax.swing.JFrame {
+public final class Login extends javax.swing.JFrame {
     public static String nick = "";
     String pass = "";
     public static int id_us = 0;
@@ -16,6 +17,13 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setTitle("Login");
         this.setLocationRelativeTo(null);
+        setIconImage(getIconImage());
+    }
+    
+    @Override 
+    public Image getIconImage(){ 
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("img/logo.png"));
+        return retValue;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

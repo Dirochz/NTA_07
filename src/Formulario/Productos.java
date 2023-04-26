@@ -487,8 +487,6 @@ public final class Productos extends javax.swing.JInternalFrame {
             documento.close();
             JOptionPane.showMessageDialog(null, "Reporte de Productos se ha Creado.");
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
-        } catch (IOException ex) {
-            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_pdfActionPerformed
 

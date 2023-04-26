@@ -686,7 +686,6 @@ public final class Ticket extends javax.swing.JInternalFrame {
                 ma.setVisible(true);
                 this.setVisible(false);
             } catch (DocumentException | HeadlessException | FileNotFoundException e) {
-            } catch (IOException ex) {
             }
         }
         else{
